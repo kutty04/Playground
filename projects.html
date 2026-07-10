@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loop Club | Project Playground</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="projects.html"><span class="brand-mark">L</span>Loop Club</a>
+    <div class="header-actions">
+      <div class="member-pill" id="memberEmail">Member</div>
+      <button class="small-button" id="logoutButton" type="button">Logout ↗</button>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="hero" data-ribbon="BUILD • BREAK • BETTER">
+      <div class="hero-copy">
+        <span class="eyebrow">Your private build laboratory</span>
+        <h1>Project <span>Playground.</span></h1>
+        <p>Track missions, collect visual sparks and turn beautifully unfinished thoughts into things that actually ship.</p>
+      </div>
+      <div class="hero-actions">
+        <button class="primary-button" id="newProjectButton" type="button">+ Start a new project</button>
+        <button class="secondary-button" id="globalStuckButton" type="button">I’m stuck ✦</button>
+      </div>
+    </section>
+
+    <section class="dashboard-layout">
+      <div>
+        <div class="today-card" id="todayCard"></div>
+        <section class="stats">
+          <article class="stat-card"><span>Total projects</span><strong id="totalProjects">0</strong></article>
+          <article class="stat-card"><span>Currently active</span><strong id="activeProjects">0</strong></article>
+          <article class="stat-card"><span>Average progress</span><strong id="averageProgress">0%</strong></article>
+        </section>
+      </div>
+
+      <aside class="stuck-card">
+        <h3>Creative first aid.</h3>
+        <p>Press the button when your brain turns into a loading spinner.</p>
+        <button class="small-button" id="stuckButton" type="button">Give me a move</button>
+        <div class="stuck-output" id="stuckOutput">Your emergency instruction will appear here.</div>
+      </aside>
+    </section>
+
+    <section class="section-heading">
+      <div>
+        <h2>What are we building?</h2>
+        <p>Flip cards for the useful stuff hiding behind the pretty front.</p>
+      </div>
+      <div class="filters" id="filters">
+        <button class="filter-button active" data-filter="All" type="button">All</button>
+        <button class="filter-button" data-filter="Spark" type="button">Spark</button>
+        <button class="filter-button" data-filter="Sketching" type="button">Sketching</button>
+        <button class="filter-button" data-filter="Building" type="button">Building</button>
+        <button class="filter-button" data-filter="Polishing" type="button">Polishing</button>
+        <button class="filter-button" data-filter="Shipped" type="button">Shipped</button>
+      </div>
+    </section>
+
+    <section class="dashboard-layout">
+      <div class="project-grid" id="projectGrid"></div>
+      <aside class="activity-panel">
+        <header><h3>Activity scrapbook</h3></header>
+        <div class="activity-list" id="activityList"></div>
+      </aside>
+    </section>
+  </main>
+
+  <div class="modal-backdrop" id="projectModal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header">
+        <h2 id="modalTitle">Start a project</h2>
+        <button class="modal-close" id="closeModalButton" type="button">×</button>
+      </div>
+      <form class="modal-form" id="projectForm">
+        <input id="projectId" type="hidden" />
+        <div class="form-grid">
+          <div class="form-field full">
+            <label for="projectTitle">Project title</label>
+            <input id="projectTitle" maxlength="60" placeholder="Portfolio Redesign" required />
+          </div>
+          <div class="form-field full">
+            <label for="projectDescription">Short description</label>
+            <textarea id="projectDescription" maxlength="220" placeholder="What are you making and why?" required></textarea>
+          </div>
+          <div class="form-field">
+            <label for="projectStatus">Status</label>
+            <select id="projectStatus">
+              <option>Spark</option><option>Sketching</option><option selected>Building</option>
+              <option>Polishing</option><option>Shipped</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="projectDeadline">Deadline</label>
+            <input id="projectDeadline" type="date" />
+          </div>
+          <div class="form-field full">
+            <label for="projectTechnologies">Technologies or tags</label>
+            <input id="projectTechnologies" maxlength="120" placeholder="HTML, CSS, JavaScript" />
+          </div>
+          <div class="form-field full">
+            <label for="projectPersonality">Project personality</label>
+            <select id="projectPersonality">
+              <option value="loud">⚡ Loud & Experimental</option>
+              <option value="calm">🌿 Calm & Minimal</option>
+              <option value="cinematic">🎬 Cinematic</option>
+              <option value="playful" selected>🧃 Playful</option>
+              <option value="technical">🧠 Technical</option>
+            </select>
+            <span class="form-help">This changes the card costume and project accent.</span>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="secondary-button" id="cancelButton" type="button">Cancel</button>
+          <button class="primary-button" type="submit">Save project</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <footer class="footer-ticker"><div class="footer-message" id="footerMessage"></div></footer>
+
+  <script src="storage.js"></script>
+  <script src="projects.js"></script>
+</body>
+</html>

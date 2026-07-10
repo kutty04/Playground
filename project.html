@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loop Club | Project Passport</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="projects.html"><span class="brand-mark">L</span>Loop Club</a>
+    <nav class="header-nav">
+      <a class="nav-link" href="projects.html">← Playground</a>
+      <a class="nav-link" id="moodboardNav" href="moodboard.html">Moodboard ✦</a>
+      <button class="small-button" id="logoutButton" type="button">Logout ↗</button>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="hero passport-hero" id="projectHero" data-ribbon="PROJECT PASSPORT">
+      <div class="hero-copy">
+        <span class="eyebrow" id="personalityLabel">Project personality</span>
+        <h1 id="projectTitle">Project <span>Passport.</span></h1>
+        <p id="projectDescription"></p>
+        <div class="tech-list" id="projectTags"></div>
+      </div>
+      <div class="hero-actions">
+        <div class="project-progress-big">
+          <strong id="projectProgress">0%</strong>
+          <span>Automatic mission progress</span>
+        </div>
+        <button class="secondary-button" id="stuckButton" type="button">I’m stuck ✦</button>
+      </div>
+    </section>
+
+    <div class="tabs" id="tabs">
+      <button class="tab-button active" data-tab="overview" type="button">Overview</button>
+      <button class="tab-button" data-tab="missions" type="button">Missions</button>
+      <button class="tab-button" data-tab="moodboard" type="button">Moodboard</button>
+      <button class="tab-button" data-tab="notes" type="button">Notes</button>
+      <button class="tab-button" data-tab="history" type="button">History</button>
+    </div>
+
+    <section class="tab-panel active" id="tab-overview"></section>
+
+    <section class="tab-panel" id="tab-missions">
+      <div class="paper-panel">
+        <div class="section-heading" style="margin-top:0">
+          <div><h2>Project missions.</h2><p>Progress is calculated from completed missions, so the percentage finally means something.</p></div>
+        </div>
+        <form class="mission-form" id="missionForm">
+          <input id="missionInput" maxlength="120" placeholder="Add the next clear, finishable action..." required />
+          <button class="primary-button" type="submit">+ Add mission</button>
+        </form>
+        <div class="mission-list" id="missionList"></div>
+        <div class="milestone-message" id="milestoneMessage"></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-moodboard"></section>
+
+    <section class="tab-panel" id="tab-notes">
+      <div class="paper-panel">
+        <div class="section-heading" style="margin-top:0">
+          <div><h2>Loose-leaf notes.</h2><p>Project thoughts that are useful but do not deserve to become missions yet.</p></div>
+        </div>
+        <form class="note-form" id="noteForm">
+          <textarea id="noteInput" maxlength="500" placeholder="Write the thought before it runs away..." required></textarea>
+          <button class="primary-button" type="submit">Pin note</button>
+        </form>
+        <div class="note-grid" id="noteGrid"></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-history">
+      <div class="paper-panel">
+        <div class="section-heading" style="margin-top:0">
+          <div><h2>Activity scrapbook.</h2><p>A receipt trail of decisions, completed missions and tiny victories.</p></div>
+        </div>
+        <div class="timeline" id="timeline"></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast"></div>
+  <footer class="footer-ticker"><div class="footer-message" id="footerMessage"></div></footer>
+
+  <script src="storage.js"></script>
+  <script src="project.js"></script>
+</body>
+</html>

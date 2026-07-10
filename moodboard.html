@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loop Club | Moodboard Wall</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="projects.html"><span class="brand-mark">L</span>Loop Club</a>
+    <nav class="header-nav">
+      <a class="nav-link" href="projects.html">← Playground</a>
+      <a class="nav-link" id="passportLink" href="project.html">Project passport</a>
+      <button class="small-button" id="logoutButton" type="button">Logout ↗</button>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="hero passport-hero" id="moodHero" data-ribbon="PIN • MOVE • DECIDE">
+      <div class="hero-copy">
+        <span class="eyebrow">Moodboard wall</span>
+        <h1 id="projectTitle">Pin the <span>feeling.</span></h1>
+        <p>Drag it, resize it, rotate it, lock it, layer it and turn inspiration into actual work.</p>
+      </div>
+      <div class="hero-actions">
+        <button class="primary-button" id="addPinButton" type="button">+ Add a pin</button>
+        <div class="arrange-hint" id="arrangeHint">Arrange mode: ON<br />Drag cards and resize from the corner.</div>
+      </div>
+    </section>
+
+    <section class="mood-toolbar">
+      <div>
+        <h2>Make the idea visible.</h2>
+        <p>Use notes, colours, images, links, quotes, fonts, features and final decision stamps.</p>
+      </div>
+      <div class="quick-add" id="quickAdd">
+        <button class="quick-button" data-type="note" type="button">+ Note</button>
+        <button class="quick-button" data-type="color" type="button">+ Colour</button>
+        <button class="quick-button" data-type="image" type="button">+ Image</button>
+        <button class="quick-button" data-type="link" type="button">+ Link</button>
+        <button class="quick-button" data-type="quote" type="button">+ Quote</button>
+        <button class="quick-button" data-type="font" type="button">+ Font</button>
+        <button class="quick-button" data-type="feature" type="button">+ Feature</button>
+        <button class="quick-button" data-type="decision" type="button">+ Decision</button>
+      </div>
+    </section>
+
+    <div class="board-controls">
+      <button class="small-button" id="arrangeButton" type="button">Pause arranging</button>
+      <button class="small-button" id="tidyButton" type="button">Tidy the wall</button>
+      <button class="small-button" id="clearNewButton" type="button">Clear NEW stickers</button>
+    </div>
+
+    <section class="moodboard-canvas arrange-mode" id="moodboard"></section>
+  </main>
+
+  <div class="modal-backdrop" id="pinModal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header">
+        <h2 id="modalTitle">Add a pin</h2>
+        <button class="modal-close" id="closeModalButton" type="button">×</button>
+      </div>
+      <form class="modal-form" id="pinForm">
+        <input id="pinId" type="hidden" />
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="pinType">Pin type</label>
+            <select id="pinType">
+              <option value="note">Note</option>
+              <option value="color">Colour swatch</option>
+              <option value="image">Image URL</option>
+              <option value="link">Link</option>
+              <option value="quote">Quote</option>
+              <option value="font">Font</option>
+              <option value="feature">Feature idea</option>
+              <option value="decision">Decision</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="pinTitle">Title</label>
+            <input id="pinTitle" maxlength="70" placeholder="Oversized typography" required />
+          </div>
+          <div class="form-field full" id="contentField">
+            <label for="pinContent">Content</label>
+            <textarea id="pinContent" maxlength="600" placeholder="Write the thought before it runs away..."></textarea>
+          </div>
+          <div class="form-field full hidden" id="urlField">
+            <label for="pinUrl">URL</label>
+            <input id="pinUrl" type="url" placeholder="https://example.com" />
+            <span class="form-help" id="urlHelp">Use a normal http or https link.</span>
+          </div>
+          <div class="form-field hidden" id="colorField">
+            <label for="pinColor">Colour</label>
+            <input id="pinColor" type="color" value="#ff8fa3" />
+          </div>
+          <div class="form-field hidden" id="fontField">
+            <label for="pinFont">Font name</label>
+            <input id="pinFont" placeholder="Georgia" value="Georgia" />
+            <span class="form-help">The font must be installed on the device to preview exactly.</span>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="secondary-button" id="cancelButton" type="button">Cancel</button>
+          <button class="primary-button" type="submit">Pin it</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <footer class="footer-ticker"><div class="footer-message" id="footerMessage"></div></footer>
+
+  <script src="storage.js"></script>
+  <script src="moodboard.js"></script>
+</body>
+</html>
